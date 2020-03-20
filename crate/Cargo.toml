@@ -1,12 +1,13 @@
 [package]
-authors = ["The RustWasm Developers"]
-categories = ["wasm"]
-description = "My super awesome Rust, WebAssembly, and Parcel project!"
-license = "Apache-2.0/MIT"
-name = "rust-parcel"
-readme = "./README.md"
-repository = "https://github.com/rustwasm/rust-parcel-template"
+name = "flatgeobuf-wasm"
 version = "0.1.0"
+authors = ["Pirmin Kalberer <pka@sourcepole.ch>"]
+categories = ["wasm"]
+description = "FlatGeobuf Wasm sandbox"
+edition = "2018"
+license = "Apache-2.0/MIT"
+readme = "./README.md"
+repository = "https://github.com/pka/flatgeobuf-wasm"
 
 [lib]
 crate-type = ["cdylib"]
@@ -14,6 +15,8 @@ crate-type = ["cdylib"]
 [dependencies]
 cfg-if = "0.1.5"
 wasm-bindgen = "0.2.29"
+flatgeobuf = "0.3"
+flatbuffers = "0.6"
 
 # The `console_error_panic_hook` crate provides better debugging of panics by
 # logging them with `console.error`. This is great for development, but requires

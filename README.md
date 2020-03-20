@@ -1,22 +1,14 @@
-# `rust-parcel-template`
+# FlatGeobuf Wasm
 
-**Kickstart your Rust, WebAssembly, and Parcel project!**
+Experimental Wasm build of [FlatGeobuf](https://bjornharrtell.github.io/flatgeobuf/) for Rust.
 
-This template comes pre-configured with all the boilerplate for compiling Rust
-to WebAssembly and hooking into a Parcel build pipeline.
+## Build and run
+
+Prerequisites: https://rustwasm.github.io/wasm-pack/installer/
+
+* `npm install` -- Setup Javascript modules
 
 * `npm run start` -- Serve the project locally for
   development at `http://localhost:1234`.
 
 * `npm run build` -- Bundle the project (in production mode)
-
-
-## Using This Template
-
-```sh
-cargo install wasm-pack
-```
-
-```sh
-npm init rust-parcel my-app
-```
