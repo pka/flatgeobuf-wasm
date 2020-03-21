@@ -15,7 +15,8 @@ crate-type = ["cdylib"]
 [dependencies]
 cfg-if = "0.1.5"
 wasm-bindgen = "0.2.29"
-flatgeobuf = "0.3"
+#flatgeobuf = "0.3"
+flatgeobuf = { git = "https://github.com/pka/flatgeobuf", branch = "svg" }
 flatbuffers = "0.6"
 
 # The `console_error_panic_hook` crate provides better debugging of panics by
