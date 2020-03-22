@@ -101,7 +101,7 @@ dependencies = [
 [[package]]
 name = "flatgeobuf"
 version = "0.3.0"
-source = "git+https://github.com/pka/flatgeobuf?branch=http#1494f5f969e4638a511e452cb61e1c84b6ef501e"
+source = "git+https://github.com/pka/flatgeobuf?branch=http#a6c7e3dce1b92e53497ee4b00fbfb743a20e118b"
 dependencies = [
  "byteorder",
  "bytes",
@@ -115,7 +115,6 @@ version = "0.1.0"
 dependencies = [
  "cfg-if",
  "console_error_panic_hook",
- "flatbuffers",
  "flatgeobuf",
  "wasm-bindgen",
  "wasm-bindgen-futures",
