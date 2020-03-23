@@ -1,7 +1,7 @@
 #[macro_use]
 extern crate cfg_if;
-use wasm_bindgen::prelude::*;
 use flatgeobuf::*;
+use wasm_bindgen::prelude::*;
 
 cfg_if! {
     // When the `console_error_panic_hook` feature is enabled, we can call the
@@ -32,15 +32,15 @@ extern "C" {
 }
 
 async fn fgb_svg(url: &str, width: u32, height: u32) -> Vec<u8> {
-    let client = HttpClient::new(url);
-    let hreader = HttpHeaderReader::read(&client).await.unwrap();
+    let mut client = BufferedHttpClient::new(url);
+    let hreader = HttpHeaderReader::read(&mut client).await.unwrap();
     let header = hreader.header();
     let mut freader = HttpFeatureReader::select_all(&header, hreader.header_len())
         .await
         .unwrap();
     let mut svg_data: Vec<u8> = Vec::new();
     freader
-        .to_svg(&client, &header, width, height, &mut svg_data)
+        .to_svg(&mut client, &header, width, height, &mut svg_data)
         .await
         .unwrap();
     svg_data
@@ -65,7 +65,8 @@ pub async fn run() -> Result<(), JsValue> {
         "https://pkg.sourcepole.ch/countries.fgb",
         window.inner_width().unwrap().as_f64().unwrap() as u32,
         window.inner_height().unwrap().as_f64().unwrap() as u32,
-    ).await;
+    )
+    .await;
     let svg_str = std::str::from_utf8(&svg_data).unwrap();
     val.set_inner_html(svg_str);
 
@@ -73,4 +74,3 @@ pub async fn run() -> Result<(), JsValue> {
 
     Ok(())
 }
-

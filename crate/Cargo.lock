@@ -101,7 +101,7 @@ dependencies = [
 [[package]]
 name = "flatgeobuf"
 version = "0.3.0"
-source = "git+https://github.com/pka/flatgeobuf?branch=http#a6c7e3dce1b92e53497ee4b00fbfb743a20e118b"
+source = "git+https://github.com/pka/flatgeobuf?branch=http#be3881281762890652a0793ac109aa7ef6740b7e"
 dependencies = [
  "byteorder",
  "bytes",
