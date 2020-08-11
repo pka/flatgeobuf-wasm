@@ -1,6 +1,7 @@
 #[macro_use]
 extern crate cfg_if;
 use flatgeobuf::*;
+use geozero_core::svg::SvgWriter;
 use wasm_bindgen::prelude::*;
 
 cfg_if! {
@@ -32,17 +33,21 @@ extern "C" {
 }
 
 async fn fgb_svg(url: &str, width: u32, height: u32) -> Vec<u8> {
-    let mut client = BufferedHttpClient::new(url);
-    let hreader = HttpHeaderReader::read(&mut client).await.unwrap();
-    let header = hreader.header();
-    let mut freader = HttpFeatureReader::select_all(&header, hreader.header_len())
-        .await
-        .unwrap();
+    let mut fgb = HttpFgbReader::open(url).await.unwrap();
+    fgb.select_all().await.unwrap();
     let mut svg_data: Vec<u8> = Vec::new();
-    freader
-        .to_svg(&mut client, &header, width, height, &mut svg_data)
-        .await
-        .unwrap();
+    let mut svg = SvgWriter::new(&mut svg_data, true);
+    if let Some(envelope) = fgb.header().envelope() {
+        svg.set_dimensions(
+            envelope.get(0),
+            envelope.get(1),
+            envelope.get(2),
+            envelope.get(3),
+            width,
+            height,
+        );
+    }
+    fgb.process_features(&mut svg).await.unwrap();
     svg_data
 }
 
