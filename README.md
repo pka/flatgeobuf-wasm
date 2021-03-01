@@ -1,6 +1,6 @@
 # FlatGeobuf Wasm
 
-Experimental Wasm build of [FlatGeobuf](https://bjornharrtell.github.io/flatgeobuf/) for Rust.
+Experimental Wasm build of [FlatGeobuf](https://flatgeobuf.org/) for Rust.
 
 ## Build and run
 

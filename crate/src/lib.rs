@@ -1,7 +1,7 @@
 #[macro_use]
 extern crate cfg_if;
 use flatgeobuf::*;
-use geozero_core::svg::SvgWriter;
+use geozero::svg::SvgWriter;
 use wasm_bindgen::prelude::*;
 
 cfg_if! {
